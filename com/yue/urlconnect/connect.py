@@ -18,15 +18,17 @@ class Get():
 
         self.responseBody = None
         self.responseHeaders = None
-
+        self.responseStatus = 200
     def generateUrl(self):
-        if self.paramenters == None:
+        if self.paramenters == None or len(self.paramenters) == 0:
             self.requestUrl = self.url
             return
+
         self.requestUrl = self.url + "?"
-        for key,value in self.paramenters:
-            self.requestUrl + key + "=" + value + "&"
-        self.requestUrl = self.requestUrl[0:len(self.requestUrl)-2]
+        for key in self.paramenters:
+            self.requestUrl = self.requestUrl + key + "=" + self.paramenters[key] + "&"
+        self.requestUrl = self.requestUrl[0:len(self.requestUrl)-1]
+        print(self.requestUrl)
 
     def preprocess(self):
         self.generateUrl()
@@ -36,9 +38,13 @@ class Get():
     def run(self):
         self.preprocess()
         self.request = urllib2.Request(self.requestUrl, self.data, self.headers)
-        self.response = urllib2.urlopen(self.request)
-        self.responseBody = self.response.read()
-        self.responseHeaders = self.response.headers
+        try:
+            self.response = urllib2.urlopen(self.request)
+            self.responseBody = self.response.read()
+            self.responseHeaders = self.response.headers
+        except urllib.error.HTTPError as e:
+            print(e)
+            self.responseStatus = e.code
 
     def getHeaders(self):
         return self.responseHeaders.__str__()

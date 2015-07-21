@@ -127,8 +127,10 @@ class MainWindow(QtGui.QMainWindow):
         paramenter = self.getParamentersValue()
         method = Get(url, headers, paramenter)
         method.run()
-        print(method.getBody())
-        print(method.getHeaders())
+        if method.responseStatus != 200:
+            QtGui.QMessageBox.information(None, None, "statusCode: " + str(method.responseStatus), "确定")
+            return
+
         result = ResultShow(method.getHeaders(), method.getBody())
         self.results.append(result)
         result.setModal(False)
@@ -147,7 +149,11 @@ class MainWindow(QtGui.QMainWindow):
         return None
 
     def getParamentersValue(self):
-        return None
+        value = {}
+        for i in range(self.ui.paramentersTabelModel.rowCount()):
+            value[self.ui.paramentersTabelModel.item(i, 0).text()] = self.ui.paramentersTabelModel.item(i, 1).text()
+        print(value)
+        return value
 
     #################################################################
     #  below is window event and others
