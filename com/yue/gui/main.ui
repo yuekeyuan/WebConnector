@@ -51,7 +51,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -98,16 +98,6 @@
       <string>browser</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="contentContent">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>70</y>
-       <width>301</width>
-       <height>211</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
@@ -142,6 +132,70 @@
      </property>
      <property name="text">
       <string>Ctt:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="type">
+     <property name="geometry">
+      <rect>
+       <x>101</x>
+       <y>70</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="base64">
+     <property name="geometry">
+      <rect>
+       <x>296</x>
+       <y>67</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>base64</string>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="base62">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>70</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>base64</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>22</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>type:</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="contentContent">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>140</y>
+       <width>311</width>
+       <height>141</height>
+      </rect>
      </property>
     </widget>
    </widget>
@@ -191,7 +245,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -264,7 +318,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>

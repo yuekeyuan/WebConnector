@@ -138,6 +138,21 @@ class MainWindow(QtGui.QMainWindow):
 
     def postEvent(self):
         print("run post event")
+        url = self.ui.urlEdit.text()
+        headers = self.getHeadersValue()
+        paramenter = self.getParamentersValue()
+        data = self.ui.contentContent.toPlainText()
+        type = self.ui.type.text()
+        method = Post(url, headers, paramenter, data, type)
+        method.run()
+        if method.responseStatus != 200:
+            QtGui.QMessageBox.information(None, None, "statusCode: " + str(method.responseStatus), "确定")
+            return
+
+        result = ResultShow(method.getHeaders(), method.getBody())
+        self.results.append(result)
+        result.setModal(False)
+        result.show()
 
     def putEvent(self):
         print("run put event")

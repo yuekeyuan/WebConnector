@@ -1,0 +1,7 @@
+{
+  "isProxy":false,
+  "proxy":{
+    "host":"",
+    "port":""
+  }
+}
